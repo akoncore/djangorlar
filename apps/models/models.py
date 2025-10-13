@@ -1,8 +1,10 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from apps.abstracts.models import AbstractBaseModel
 
-class Address(models.Model):
+
+class Address(AbstractBaseModel):
     street_name = models.CharField(max_length=50)
     home_number = models.IntegerField()
 
@@ -10,7 +12,7 @@ class Address(models.Model):
         return self.street_name
 
 
-class User(models.Model):
+class User(AbstractBaseModel):
     fullname = models.CharField(max_length=255)
     address = models.ForeignKey(Address, verbose_name=_("Address"), on_delete=models.CASCADE, related_name="users")
 
@@ -18,39 +20,33 @@ class User(models.Model):
         return self.fullname
 
 
-class Restaurant(models.Model):
+class Restaurant(AbstractBaseModel):
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=50)
     image = models.CharField(max_length=50)
-    created_at = models.DateField(auto_now_add=True)
-    updated_at = models.DateField(auto_now=True)
 
     def __str__(self):
         return self.name
 
 
-class MenuItem(models.Model):
+class MenuItem(AbstractBaseModel):
     restaurant = models.ForeignKey(Restaurant, verbose_name=_("Restaurant"), related_name="menu_items", on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=50)
-    created_at = models.DateField(auto_now_add=True)
-    updated_at = models.DateField(auto_now=True)
 
     def __str__(self):
         return self.name
 
 
-class Category(models.Model):
+class Category(AbstractBaseModel):
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=50)
-    created_at = models.DateField(auto_now_add=True)
-    updated_at = models.DateField(auto_now=True)
 
     def __str__(self):
         return self.name
 
 
-class ItemCategory(models.Model):
+class ItemCategory(AbstractBaseModel):
     menu_item = models.ForeignKey(MenuItem, verbose_name=_("Menu Item"), on_delete=models.CASCADE, related_name="categories")
     category = models.ForeignKey(Category, verbose_name=_("Category"), on_delete=models.CASCADE, related_name="menu_items")
 
@@ -64,7 +60,7 @@ ADD_ON_OR_VARIANT = [
 ]
 
 
-class Option(models.Model):
+class Option(AbstractBaseModel):
     name = models.CharField(max_length=50)
     add_or_no = models.CharField(max_length=50, choices=ADD_ON_OR_VARIANT, default="large")
 
@@ -72,7 +68,7 @@ class Option(models.Model):
         return self.name
 
 
-class ItemOption(models.Model):
+class ItemOption(AbstractBaseModel):
     menu_item = models.ForeignKey(MenuItem, verbose_name=_("Menu Item"), on_delete=models.CASCADE, related_name="options")
     option = models.ForeignKey(Option, verbose_name=_("Option"), on_delete=models.CASCADE, related_name="menu_items")
     price_delta = models.IntegerField()
@@ -90,21 +86,21 @@ STATUS_CHOICES = [
 ]
 
 
-class PromoCode(models.Model):
+class PromoCode(AbstractBaseModel):
     code = models.CharField(max_length=20)
 
     def __str__(self):
         return self.code
 
 
-class OrderCode(models.Model):
+class OrderCode(AbstractBaseModel):
     code = models.CharField(max_length=20)
 
     def __str__(self):
         return self.code
 
 
-class Order(models.Model):
+class Order(AbstractBaseModel):
     user = models.ForeignKey(User, verbose_name=_("User"), on_delete=models.CASCADE, related_name="orders")
     restaurant = models.ForeignKey(Restaurant, verbose_name=_("Restaurant"), on_delete=models.CASCADE, related_name="orders")
     address = models.ForeignKey(Address, verbose_name=_("Address"), on_delete=models.CASCADE, related_name="orders")
@@ -119,7 +115,7 @@ class Order(models.Model):
         return f"Order {self.name} - {self.status}"
 
 
-class OrderItem(models.Model):
+class OrderItem(AbstractBaseModel):
     order = models.ForeignKey(Order, verbose_name=_("Order"), on_delete=models.CASCADE, related_name="order_items")
     line_total = models.IntegerField()
 
