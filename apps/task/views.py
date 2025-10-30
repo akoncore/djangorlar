@@ -38,6 +38,8 @@ def Counter(request):
     return render(request, "counter.html",{"counter":request.session["counter"]})
 
 
+
+
 def inc_counter(request):
     request.session["counter"] = request.session.get("counter",0)+1
     return redirect("counter")
