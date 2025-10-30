@@ -1,0 +1,11 @@
+
+<h1>Cities</h1>
+<ul>
+    {%for city in cities%}
+        <li>{{city.name}}</li>
+    {%endfor%}
+
+</ul>
+<form action="/city_time">
+    <button type="submit">Show Time</button>
+</form>

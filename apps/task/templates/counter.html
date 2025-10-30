@@ -1,0 +1,12 @@
+
+<h1>Counter : {{counter}}</h1>
+
+<form method = "post" action="/cnt/inc_counter/">
+    {% csrf_token %}
+        <button type="submit">Increase</button>
+</form>
+
+<form method = "post" action="/cnt/reset_counter/">
+    {% csrf_token %}
+        <button type="submit">Reset</button>
+</form>
