@@ -8,7 +8,7 @@ class Person:
         self.age = age
 
     def greet(self):
-        return f'Привет, меня зовут {self.name}, мне {self.age} лет.'
+        return f'Привет, меня зовут {self.name}'
 
 class BankAccount:
     def __init__(self, owner, balance=0.0):
@@ -46,11 +46,12 @@ class Circle(Shape):
         return pi * self.r * self.r
 
 class Rectangle(Shape):
-    def __init__(self, w, h):
+    def __init__(self, w, h,t):
         self.w = w
         self.h = h
+        self.t = t
     def area(self):
-        return self.w * self.h
+        return self.w * self.h * self.t
 
 if __name__ == '__main__':
     p = Person('Akon', 20)
@@ -61,6 +62,6 @@ if __name__ == '__main__':
     acc.withdraw(10)
     print('Баланс:', acc.get_balance())
 
-    shapes = [Circle(2), Rectangle(1, 2)]
+    shapes = [Circle(2), Rectangle(1, 2, 5)]
     for s in shapes:
         print('Площадь:', s.area())
