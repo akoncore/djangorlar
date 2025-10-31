@@ -75,14 +75,21 @@ class Person(Model):
     name = Field(default='')
     age = Field(default=0)
     male = bool(True)
-
+class Comment(Model):
+    title = Field(default='')
+    content = Field(default="None")
+    name = Person()
+    
 if __name__ == '__main__':
     p1 = Person(name='AKon', age=22,male = True); p1.save()
     p2 = Person(name='Sam', age=26); p2.save()
     p3 = Person(name='Akon', age=30); p3.save()
+    c1 = Comment(title='DDD', content='dd',name = p1.name); c1.save()
 
     print('Все люди:', [(p.id, p.name, p.age) for p in Person.objects().all()])
     print('Фильтр name=Ainur:', [(p.id, p.name, p.age) for p in Person.objects().filter(name='Akon').all()])
 
-    p1.age = 22; p1.save()
-    print('После обновления:', [(p.id, p.name,p.age) for p in Person.objects().filter(id=1).all()])
+    p1.age = 23 ,p1.save()
+    print(p1.age)
+    
+    print(c1)

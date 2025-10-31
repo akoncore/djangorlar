@@ -61,7 +61,3 @@ if __name__ == '__main__':
     acc.deposit(60)
     acc.withdraw(10)
     print('Баланс:', acc.get_balance())
-
-    shapes = [Circle(2), Rectangle(1, 2, 5)]
-    for s in shapes:
-        print('Площадь:', s.area())
