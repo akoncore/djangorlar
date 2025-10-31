@@ -53,14 +53,14 @@ class Rectangle(Shape):
         return self.w * self.h
 
 if __name__ == '__main__':
-    p = Person('Dana', 20)
+    p = Person('Akon', 20)
     print(p.greet())
 
-    acc = BankAccount('Dana', 100)
+    acc = BankAccount('Akon', 100)
     acc.deposit(60)
-    acc.withdraw(30)
+    acc.withdraw(10)
     print('Баланс:', acc.get_balance())
 
-    shapes = [Circle(2), Rectangle(3, 4)]
+    shapes = [Circle(2), Rectangle(1, 2)]
     for s in shapes:
         print('Площадь:', s.area())
