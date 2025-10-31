@@ -76,8 +76,8 @@ class Person(Model):
     age = Field(default=0)
 
 if __name__ == '__main__':
-    p1 = Person(name='Ainur', age=21); p1.save()
-    p2 = Person(name='Sam', age=25); p2.save()
+    p1 = Person(name='Ainur', age=22); p1.save()
+    p2 = Person(name='Sam', age=26); p2.save()
     p3 = Person(name='Ainur', age=30); p3.save()
 
     print('Все люди:', [(p.id, p.name, p.age) for p in Person.objects().all()])
