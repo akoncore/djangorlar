@@ -84,7 +84,7 @@ if __name__ == '__main__':
     p1 = Person(name='AKon', age=22,male = True); p1.save()
     p2 = Person(name='Sam', age=26); p2.save()
     p3 = Person(name='Akon', age=30); p3.save()
-    c1 = Comment(title='DDD', content='dd',name = p1.name); c1.save()
+    c1 = Comment(title='DDD', content='aa',name = p1.name); c1.save()
 
     print('Все люди:', [(p.id, p.name, p.age) for p in Person.objects().all()])
     print('Фильтр name=Ainur:', [(p.id, p.name, p.age) for p in Person.objects().filter(name='Akon').all()])
