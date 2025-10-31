@@ -57,7 +57,7 @@ if __name__ == '__main__':
     print(p.greet())
 
     acc = BankAccount('Dana', 100)
-    acc.deposit(50)
+    acc.deposit(60)
     acc.withdraw(30)
     print('Баланс:', acc.get_balance())
 
