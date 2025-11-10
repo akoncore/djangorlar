@@ -9,6 +9,7 @@ from .models import (User,Restaurant,Option,MenuItem,Category,ItemCategory,Order
 @admin.register(Restaurant)
 class AdminRestaurant(admin.ModelAdmin):
     list_display = ("name","description","image")
+    list_editable = ("description","image",)
     list_display_links = ("name",)
     ordering = ("-updated_at",)
     list_filter = ("updated_at",)
@@ -32,6 +33,11 @@ class AdminRestaurant(admin.ModelAdmin):
             )
         }
     ))
+    readonly_fields = (
+        "created_at",
+        "updated_at",
+        "deleted_at",
+    )
     
     def has_add_permission(self, request:WSGIRequest)->bool:
         return False
