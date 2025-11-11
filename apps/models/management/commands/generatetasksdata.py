@@ -14,7 +14,6 @@ class Command(BaseCommand):
     
     EMAIL_DOMAINS = (
         "gmali.com",
-        "mail.ru",
     )
     SOME_WORDS = (
         "lorem",
@@ -90,7 +89,7 @@ class Command(BaseCommand):
     def handle(self, *args: tuple[Any, ...], **kwargs: dict[str, Any])->None:
         start_time: datetime = datetime.now()
         
-        self.__generate_users(user_count = 20)
+        #self.__generate_users(user_count = 20)
         self.__generate_restaurant(rest_count=20)
         
         self.stdout.write(

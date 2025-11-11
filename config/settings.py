@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-i0&2#6)rt_kujrwa&53dg3^lz0+sj1mds#7w8%=*z+xb0ykjms
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+AUTH_USER_MODEL = "auths.CustomUser"
 
 # Application definition
 
@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.models',
     'apps.task',
-    'apps.abstracts.apps.AbstractsConfig'
+    'apps.abstracts.apps.AbstractsConfig',
+    'apps.auths.apps.AuthsConfig',
 
 ]
 
