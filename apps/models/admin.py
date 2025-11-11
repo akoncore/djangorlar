@@ -10,6 +10,7 @@ from .models import (User,Restaurant,Option,MenuItem,Category,ItemCategory,Order
 class AdminRestaurant(admin.ModelAdmin):
     list_display = ("name","description","image")
     list_editable = ("description","image",)
+    list_filter = ("created_at","updated_at",)
     list_display_links = ("name",)
     ordering = ("-updated_at",)
     list_filter = ("updated_at",)
