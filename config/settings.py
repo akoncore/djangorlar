@@ -37,10 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework_simplejwt',
     'apps.models',
     'apps.task',
     'apps.abstracts.apps.AbstractsConfig',
     'apps.auths.apps.AuthsConfig',
+    'apps.exampleDRF'
 
 ]
 
@@ -70,6 +73,12 @@ TEMPLATES = [
         },
     },
 ]
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    )
+}
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
