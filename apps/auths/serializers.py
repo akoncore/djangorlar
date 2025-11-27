@@ -52,3 +52,12 @@ class LoginSerializer(Serializer):
                 'Must include "email" and "password".'
             )
             
+            
+class UserProfileSerializer(ModelSerializer):
+    
+    class Meta:
+        model = CustomUser
+        fields = [
+            'full_name','email','is_active'
+        ]
+        

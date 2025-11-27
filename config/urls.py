@@ -22,5 +22,5 @@ from apps.task.views import welcom_page,list_user,cities,cities_time,Counter,inc
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/auth/',include('apps.auths.urls')),
-    path('api/v1/education/',include('apps.exampleDRF.urls'))
+    path('api/education/',include('apps.exampleDRF.urls'))
 ]

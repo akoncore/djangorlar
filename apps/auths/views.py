@@ -8,7 +8,8 @@ from django.contrib.auth import login
 from .models import CustomUser
 from .serializers import (
    RegisterSerializer,
-   LoginSerializer
+   LoginSerializer,
+   UserProfileSerializer
 )
 
 class RegisterView(viewsets.ViewSet):
@@ -47,3 +48,5 @@ class LoginView(viewsets.ViewSet):
             'access':str(refresh.access_token),
             'message':'Login OK'
         },status=status.HTTP_200_OK)
+        
+        
