@@ -21,11 +21,6 @@ from apps.task.views import welcom_page,list_user,cities,cities_time,Counter,inc
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',view=welcom_page,name="welcom_page"),
-    path('users/',view=list_user),
-    path('cities/',view=cities),
-    path('city_time/',view = cities_time),
-    path('cnt/',view = Counter, name = "counter"),
-    path('cnt/inc_counter/',view = inc_counter,name = "inc_counter"),
-    path('cnt/reset_counter/',view = reset_counter, name = "reset_counter")
+    path('api/v1/auth/',include('apps.auths.urls')),
+    path('api/education/',include('apps.exampleDRF.urls'))
 ]

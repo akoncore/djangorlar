@@ -6,7 +6,7 @@ from .models import (User,Restaurant,Option,MenuItem,Category,ItemCategory,Order
 
 
 
-@admin.register(Restaurant)
+'''@admin.register(Restaurant)
 class AdminRestaurant(admin.ModelAdmin):
     list_display = ("name","description","image")
     list_editable = ("description","image",)
@@ -50,3 +50,4 @@ class AdminRestaurant(admin.ModelAdmin):
     def has_change_permission(self, request, obj:Optional[Restaurant]= None):
         return False
     
+'''
